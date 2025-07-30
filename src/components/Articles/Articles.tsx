@@ -26,14 +26,17 @@ export default function Articles() {
       setArticles(fetchedArticles);
     } catch (err) {
       // Only show error if we don't have any articles (including mock data)
-      if (articles.length === 0) {
-        setError(err instanceof Error ? err.message : 'Failed to load articles');
-      }
+      setError((prevError) => {
+        if (articles.length === 0) {
+          return err instanceof Error ? err.message : 'Failed to load articles';
+        }
+        return prevError;
+      });
       console.error('Error fetching articles:', err);
     } finally {
       setLoading(false);
     }
-  }, [mediumUrl, articles.length]);
+  }, [mediumUrl]);
 
   useEffect(() => {
     fetchArticles();
