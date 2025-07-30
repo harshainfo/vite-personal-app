@@ -51,10 +51,9 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
           sx={{
             objectFit: 'cover',
           }}
-          onError={(e) => {
+          onError={() => {
             // Hide image if it fails to load
-            const target = e.target as HTMLImageElement;
-            target.style.display = 'none';
+            setIsImageVisible(false);
           }}
         />
       )}
