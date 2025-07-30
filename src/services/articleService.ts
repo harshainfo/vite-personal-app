@@ -81,7 +81,7 @@ export class ArticleService {
           const link = this.getTextContent(item, 'link');
           const description = this.getTextContent(item, 'description');
           const pubDate = this.getTextContent(item, 'pubDate');
-          const creator = this.getTextContent(item, 'dc\\:creator') || this.getTextContent(item, 'creator');
+          const creator = this.getTextContent(item, 'dc:creator') || this.getTextContent(item, 'creator');
 
           // Extract categories
           const categoryElements = item.querySelectorAll('category');
